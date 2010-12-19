@@ -35,11 +35,11 @@
 ;; others) to insert a button into a buffer at point, something similar
 ;; can't be done here, due to the lack of point in header lines.
 
-;; Instead us `format-header-button' like this:
+;; Instead us `header-button-format' like this:
 ;;
 ;; (setq header-line-format
 ;;       (concat "Here's a button: "
-;;               (format-header-button "Click me!" :action 'my-action)))
+;;               (header-button-format "Click me!" :action 'my-action)))
 
 ;; Like with `button' you can create your own derived button types:
 ;;
@@ -48,8 +48,8 @@
 ;;   :action 'my-action)
 ;;
 ;; (setq header-line-format
-;;       (concat (format-header-button "Click me!" :action 'my-action) " "
-;;               (format-header-button "No me!" :type 'my-header)))
+;;       (concat (header-button-format "Click me!" :action 'my-action) " "
+;;               (header-button-format "No me!" :type 'my-header)))
 
 ;; The function associated with `:action' is called with the button plist
 ;; as only argument.  Do no use `plist-get' to extract a value from it.
@@ -70,8 +70,8 @@
 (defvar header-button-map
   (let ((map (make-sparse-keymap)))
     ;; $$$ follow-link does not work here
-    (define-key map [header-line mouse-1] 'push-header-button)
-    (define-key map [header-line mouse-2] 'push-header-button)
+    (define-key map [header-line mouse-1] 'header-button-push)
+    (define-key map [header-line mouse-2] 'header-button-push)
     map)
   "Keymap used by buttons in header lines.")
 
@@ -90,7 +90,7 @@
   "Return header button BUTTON's text label."
   (plist-get button 'label))
 
-(defun format-header-button (label &rest properties)
+(defun header-button-format (label &rest properties)
   "Format a header button string with the label LABEL.
 The remaining arguments form a sequence of PROPERTY VALUE pairs,
 specifying properties to add to the button.
@@ -119,7 +119,7 @@ concatenating this string with others."
   "Call header button BUTTON's `:action' property."
   (funcall (header-button-get button :action) button))
 
-(defun push-header-button ()
+(defun header-button-push ()
   "Perform the action specified by the pressed header button."
   (interactive)
   (let* ((posn (event-start last-command-event))
