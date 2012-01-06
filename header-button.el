@@ -60,6 +60,8 @@
 ;;            (header-button-label button)
 ;;            (header-button-get button 'category)))
 
+;;; Change Log:
+
 ;;; Code:
 
 (require 'button)
