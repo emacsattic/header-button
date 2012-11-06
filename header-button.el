@@ -34,7 +34,7 @@
 ;; others) to insert a button into a buffer at point, something similar
 ;; can't be done here, due to the lack of point in header lines.
 
-;; Instead us `header-button-format' like this:
+;; Instead use `header-button-format' like this:
 ;;
 ;; (setq header-line-format
 ;;       (concat "Here's a button: "
