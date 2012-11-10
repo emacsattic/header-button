@@ -114,7 +114,10 @@ To actually create the header button set the value of variable
 
 (defun header-button-activate (button)
   "Call header button BUTTON's `:action' property."
-  (funcall (header-button-get button :action) button))
+  (funcall (or
+            (header-button-get button 'action)
+            (header-button-get button :action))
+           button))
 
 (defun header-button-push ()
   "Perform the action specified by the pressed header button."
