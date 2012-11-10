@@ -114,7 +114,12 @@ To actually create the header button set the value of variable
 
 (defun header-button-activate (button)
   "Call header button BUTTON's `:action' property."
-  (funcall (header-button-get button :action) button))
+  ;; Older versions only supported `:action' but button.el uses
+  ;; `action' instead.  Now we support both and query `:action'
+  ;; first because `action' defaults to function `ignore'.
+  (funcall (or (header-button-get button :action)
+               (header-button-get button 'action))
+           button))
 
 (defun header-button-push ()
   "Perform the action specified by the pressed header button."
