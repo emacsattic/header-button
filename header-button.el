@@ -1,11 +1,11 @@
 ;;; header-button.el --- clickable buttons in header lines
 
-;; Copyright (C) 2010-2012  Jonas Bernoulli
+;; Copyright (C) 2010-2013  Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Created: 20100604
-;; Version: 0.2.2
-;; Homepage: https://github.com/tarsius/header-button
+;; Version: 0.3.0
+;; Homepage: https://github.com/emacsattic/header-button
 ;; Keywords: extensions
 
 ;; This file is not part of GNU Emacs.
@@ -24,6 +24,9 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
+
+;;    Starting with 24.4 (24.3.50.1 as of 20121212) this library is
+;;    no longer required; the changes have been merged into Emacs.
 
 ;; This package extends `button' by adding support for adding buttons to
 ;; the header line.  Since the header line is very limited compared to a
